@@ -1,0 +1,22 @@
+version: "2"
+
+services:
+  sql:
+    image: mysql:8.0.19
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - d:/mysql/mystore:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: mystore
+      MYSQL_USER: user_store
+      MYSQL_PASSWORD: store
+
+  adminer:
+    image: adminer:4.7.6
+    restart: always
+    ports:
+      - 8082:8080
