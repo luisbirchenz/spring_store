@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lab.productline.dto.ProductLineDTO;
 import com.lab.service.ProductLineService;
+
+import lombok.experimental.PackagePrivate;
 
 import static java.util.Objects.requireNonNull;
 @RestController
@@ -38,7 +41,7 @@ public class ProductLineRestController {
 					try {
 						return ResponseEntity
 								.ok()
-								.eTag(dto.getVersion().toString())
+								.eTag(dto.getProductline())
 								.location(new URI("api/productline/" + dto.getId()))
 								.body(dto);
 					} catch(URISyntaxException e) {
@@ -55,7 +58,7 @@ public class ProductLineRestController {
 		try {
 			return ResponseEntity
 					.created(new URI("api/productline/"+productLineDTO.getId()))
-					.eTag(productLineDTO.getVersion().toString())
+					.eTag(productLineDTO.getProductline())
 					.body(productLineDTO);
 		} catch (URISyntaxException e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
@@ -67,7 +70,7 @@ public class ProductLineRestController {
 	public ResponseEntity<?> updateProductLine(
 			@PathVariable("id") Long id,
 			@RequestBody ProductLineDTO productLineDTO,
-			@RequestHeader("If-Match") Integer ifMatch) {
+			@RequestHeader("If-Match") String ifMatch) {
 		
 		requireNonNull(id);
 		requireNonNull(productLineDTO);
@@ -78,26 +81,39 @@ public class ProductLineRestController {
 		
 		return currentProductLine.map(
 				p -> {
-					if(!p.getVersion().equals(ifMatch)) {
+					if(!p.getProductline().equals(ifMatch)) {
 						return ResponseEntity.status(HttpStatus.CONFLICT).build();
 					}
 					p.setDescription(productLineDTO.getDescription());
 					p.setText(productLineDTO.getText());
 					p.setImage(productLineDTO.getImage());
 					p.setProductline(productLineDTO.getProductline());
-					p.setVersion(p.getVersion() + 1);
 				try {
 					service.save(p);
 					return ResponseEntity
 							.ok()
 							.location(new URI("api/productline/"+p.getId()))
-							.eTag(p.getVersion().toString())
+							.eTag(p.getProductline())
 							.body(p);
 				} catch (URISyntaxException e) {
 					return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 				}
 			}).orElse(ResponseEntity.notFound().build());
+	}
 		
+	@DeleteMapping("/productline/{id}")
+	public ResponseEntity<?> deleteProductLine(@PathVariable("id") Long id){
+		//First of all find the product
+		Optional<ProductLineDTO> currentProductLine = service.findById(id);
+		
+		return currentProductLine.map(
+				p -> {
+					if(service.delete(id)) {
+						return ResponseEntity.ok().build();
+					} else {
+						return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+					}
+				}).orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 	
 	@GetMapping("/productline")

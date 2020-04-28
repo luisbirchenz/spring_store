@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 public class ProductLineDTO {
 	private Long id;
@@ -19,5 +20,4 @@ public class ProductLineDTO {
 	private String description;
 	private String image;
 	private List<ProductDTO> products;	
-	private Long version;
 }

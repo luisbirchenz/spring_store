@@ -1,7 +1,5 @@
 package com.lab.domain;
 
-import java.sql.Blob;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,8 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
 /**
@@ -19,8 +17,9 @@ import javax.persistence.OneToMany;
  */
 @Entity(name = "productlines")
 public class ProductLine {
+
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "product_line_id")
 	private Long id;
 	
@@ -34,13 +33,13 @@ public class ProductLine {
 	private String html;
 	
 	@Column(name = "image")
-	@Lob
 	private String image;
+	
+//	@Column(name="version", nullable = false, columnDefinition = "int default 1") 
+//	private Long version;
 	
 	@OneToMany(mappedBy = "productline", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
 	private List<Product> products;
-	
-	private Long version;
 	
 	ProductLine() {
 		// Used by JPA.
@@ -94,11 +93,11 @@ public class ProductLine {
 		this.products = products;
 	}
 
-	public Long getVersion() {
-		return version;
-	}
-
-	public void setVersion(Long version) {
-		this.version = version;
-	}
+//	public Long getVersion() {
+//		return version;
+//	}
+//
+//	public void setVersion(Long version) {
+//		this.version = version;
+//	}
 }

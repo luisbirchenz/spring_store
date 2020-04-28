@@ -41,6 +41,11 @@ public class ProductLineService {
 		ProductLine productLine = productLineRepository.save(toProductLineEntity(productLineDTO));
 		return toProductLineDTO(productLine);
 	}
+	
+	public boolean delete(Long id) {
+		productLineRepository.deleteById(id);
+		return true;
+	}
 
 	
 	private ProductLineDTO toProductLineDTO(ProductLine productline) {
