@@ -1,4 +1,4 @@
-insert  into `customers`(`customerNumber`,`customerName`,`contactLastName`,`contactFirstName`,`phone`,`addressLine1`,`addressLine2`,`city`,`state`,`postalCode`,`country`,`salesRepEmployeeNumber`,`creditLimit`) values 
+insert  into `customers`(`customer_number`,`customer_name`,`contact_last_name`,`contact_first_name`,`phone`,`address_line1`,`address_line2`,`city`,`state`,`postal_code`,`country`,`sales_rep_employee_number`,`credit_limit`) values 
 
 (103,'Atelier graphique','Schmitt','Carine ','40.32.2555','54, rue Royale',NULL,'Nantes',NULL,'44000','France',1370,'21000.00'),
 

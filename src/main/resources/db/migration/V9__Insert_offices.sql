@@ -1,4 +1,4 @@
-insert  into `offices`(`officeCode`,`city`,`phone`,`addressLine1`,`addressLine2`,`state`,`country`,`postalCode`,`territory`) values 
+insert  into `offices`(`office_code`,`city`,`phone`,`address_line1`,`address_line2`,`state`,`country`,`postal_code`,`territory`) values 
 
 ('1','San Francisco','+1 650 219 4782','100 Market Street','Suite 300','CA','USA','94080','NA'),
 

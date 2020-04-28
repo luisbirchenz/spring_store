@@ -1,12 +1,12 @@
 CREATE TABLE `offices` (
-  `officeCode` varchar(10) NOT NULL,
+  `office_code` varchar(10) NOT NULL,
   `city` varchar(50) NOT NULL,
   `phone` varchar(50) NOT NULL,
-  `addressLine1` varchar(50) NOT NULL,
-  `addressLine2` varchar(50) DEFAULT NULL,
+  `address_line1` varchar(50) NOT NULL,
+  `address_line2` varchar(50) DEFAULT NULL,
   `state` varchar(50) DEFAULT NULL,
   `country` varchar(50) NOT NULL,
-  `postalCode` varchar(15) NOT NULL,
+  `postal_code` varchar(15) NOT NULL,
   `territory` varchar(10) NOT NULL,
-  PRIMARY KEY (`officeCode`)
+  PRIMARY KEY (`office_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
