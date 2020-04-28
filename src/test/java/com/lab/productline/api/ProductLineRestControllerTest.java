@@ -33,6 +33,8 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lab.dto.builder.ProductDTOBuilder;
+import com.lab.dto.builder.ProductLineDTOBuilder;
 import com.lab.product.dto.ProductDTO;
 import com.lab.productline.dto.ProductLineDTO;
 import com.lab.service.ProductLineService;
@@ -52,9 +54,11 @@ class ProductLineRestControllerTest {
 	@DisplayName("GET /api/productline/{id} - Found")
 	void testFindById() throws Exception {
 		List<ProductDTO> products = new ArrayList<>();
-		ProductDTO productDTO = new ProductDTO("S10_1949", "1952 Alpine Renault 1300", "Classic Cars", "1:10", "Classic Metal Creations", "description", 7, new BigDecimal(98.0), new BigDecimal(214.0));
+		ProductDTO productDTO = ProductDTOBuilder.builder().build();
 		products.add(productDTO);
-		Optional<ProductLineDTO> dto = Optional.of(new ProductLineDTO(1L, "Classic Cars", "Text", "description", "image", products));
+		Optional<ProductLineDTO> dto = Optional.of(
+					ProductLineDTOBuilder.builder().products(products).build()
+				);
 		doReturn(dto).when(service).findById(1L);
 		
 		// Execute the get request
@@ -86,9 +90,9 @@ class ProductLineRestControllerTest {
 	
 	@Test
 	@DisplayName("POST /api/productline - SUCCESS")
-	void saveProductLine() throws Exception {
-		ProductLineDTO productDTO = new ProductLineDTO(null, "Sport Cars", "Text", "description", "image", Collections.emptyList());
-		ProductLineDTO newProductDTO = new ProductLineDTO(1L, "Sport Cars", "Text", "description", "image", Collections.emptyList());
+	void saveProductLine() throws Exception {		
+		ProductLineDTO productDTO = ProductLineDTOBuilder.builder().productline("Sport Cars").build();		
+		ProductLineDTO newProductDTO = ProductLineDTOBuilder.builder().productline("Sport Cars").build();
 		doReturn(newProductDTO).when(service).save(any(ProductLineDTO.class));
 		
 		mockMvc.perform(
@@ -125,9 +129,11 @@ class ProductLineRestControllerTest {
 	@Test
 	@DisplayName("PUT /api/productline/{id} - SUCCESS")
 	void updateProductLine() throws Exception {
-		ProductLineDTO putProductDTO = new ProductLineDTO(null, "Executive Cars", "Text", "description", "image", Collections.emptyList());
-		ProductLineDTO modifiedProductDTO = new ProductLineDTO(1L, "Executive Cars", "Text", "description", "image", Collections.emptyList());
-		Optional<ProductLineDTO> currentDTO = Optional.of(new ProductLineDTO(1L, "Sport Cars", "Text", "description", "image", Collections.emptyList()));
+		ProductLineDTO putProductDTO = ProductLineDTOBuilder.builder().productline("Executive Cars").build();
+		ProductLineDTO modifiedProductDTO = ProductLineDTOBuilder.builder().productline("Executive Cars").build();
+				
+		Optional<ProductLineDTO> currentDTO = Optional.of(
+				ProductLineDTOBuilder.builder().productline("Sport Cars").build());				
 		doReturn(currentDTO).when(service).findById(1L);
 		doReturn(modifiedProductDTO).when(service).save(any(ProductLineDTO.class));
 		
@@ -154,8 +160,10 @@ class ProductLineRestControllerTest {
 	@DisplayName("PUT /api/productline/{id} - FAILED")
 	void updateProductLine_failed() throws Exception {
 		ProductLineDTO putProductDTO = null;
-		ProductLineDTO modifiedProductDTO = new ProductLineDTO(1L, "Executive Cars", "Text", "description", "image", Collections.emptyList());
-		Optional<ProductLineDTO> currentDTO = Optional.of(new ProductLineDTO(1L, "Sport Cars", "Text", "description", "image", Collections.emptyList()));
+		ProductLineDTO modifiedProductDTO =
+				ProductLineDTOBuilder.builder().productline("Executive Cars").build();
+		Optional<ProductLineDTO> currentDTO = Optional.of(
+				ProductLineDTOBuilder.builder().productline("Sport Cars").build());				
 		doReturn(currentDTO).when(service).findById(1L);
 		doReturn(modifiedProductDTO).when(service).save(any(ProductLineDTO.class));
 		
@@ -170,9 +178,10 @@ class ProductLineRestControllerTest {
 	@Test
 	@DisplayName("PUT /api/productline/{id} - NOT FOUND")
 	void updateProductLine_notFound() throws Exception {
-		ProductLineDTO putProductDTO = new ProductLineDTO(null, "Executive Cars", "Text", "description", "image", Collections.emptyList());
-		ProductLineDTO modifiedProductDTO = new ProductLineDTO(1L, "Executive Cars", "Text", "description", "image", Collections.emptyList());
-		Optional<ProductLineDTO> currentDTO = Optional.of(new ProductLineDTO(1L, "Sport Cars", "Text", "description", "image", Collections.emptyList()));
+		ProductLineDTO putProductDTO = ProductLineDTOBuilder.builder().productline("Executive Cars").build();				
+		ProductLineDTO modifiedProductDTO = ProductLineDTOBuilder.builder().productline("Executive Cars").build();				
+		Optional<ProductLineDTO> currentDTO = Optional.of(
+				ProductLineDTOBuilder.builder().productline("Sport Cars").build());
 		doReturn(currentDTO).when(service).findById(1L);
 		doReturn(modifiedProductDTO).when(service).save(any(ProductLineDTO.class));
 		
@@ -188,7 +197,8 @@ class ProductLineRestControllerTest {
 	@Test
 	@DisplayName("DELETE /api/productline/{id} - SUCCESS")
 	void deleteProductLine() throws Exception {
-		Optional<ProductLineDTO> mockDTO = Optional.of(new ProductLineDTO(1L, "Sport Cars", "Text", "description", "image", Collections.emptyList()));
+		Optional<ProductLineDTO> mockDTO = Optional.of(
+				ProductLineDTOBuilder.builder().productline("Sport Cars").build());
 		doReturn(mockDTO).when(service).findById(1L);
 		doReturn(true).when(service).delete(1L);
 		
@@ -200,7 +210,8 @@ class ProductLineRestControllerTest {
 	@Test
 	@DisplayName("DELETE /api/productline/{id} - NOT FOUND")
 	void deleteProductLine_notfound() throws Exception {
-		Optional<ProductLineDTO> mockDTO = Optional.of(new ProductLineDTO(1L, "Sport Cars", "Text", "description", "image", Collections.emptyList()));
+		Optional<ProductLineDTO> mockDTO = Optional.of(
+				ProductLineDTOBuilder.builder().productline("Sport Cars").build());
 		doReturn(mockDTO).when(service).findById(1L);
 		doReturn(true).when(service).delete(1L);
 		
@@ -212,7 +223,8 @@ class ProductLineRestControllerTest {
 	@Test
 	@DisplayName("DELETE /api/productline/{id} - FAILED")
 	void deleteProductLine_failed() throws Exception {
-		Optional<ProductLineDTO> mockDTO = Optional.of(new ProductLineDTO(1L, "Sport Cars", "Text", "description", "image", Collections.emptyList()));
+		Optional<ProductLineDTO> mockDTO = Optional.of(
+				ProductLineDTOBuilder.builder().productline("Sport Cars").build());				
 		doReturn(mockDTO).when(service).findById(1L);
 		doReturn(false).when(service).delete(1L);
 		
