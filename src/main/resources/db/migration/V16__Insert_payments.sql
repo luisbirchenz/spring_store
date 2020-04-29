@@ -1,4 +1,4 @@
-insert  into `payments`(`customerNumber`,`checkNumber`,`paymentDate`,`amount`) values 
+insert  into `payments`(`customer_number`,`check_number`,`payment_date`,`amount`) values 
 
 (103,'HQ336336','2004-10-19','6066.78'),
 

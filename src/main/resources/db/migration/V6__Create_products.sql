@@ -1,14 +1,14 @@
 CREATE TABLE `products` (
-  `productCode` varchar(15) NOT NULL,
-  `productName` varchar(70) NOT NULL,
-  `productLine` varchar(50) NOT NULL,
-  `productScale` varchar(10) NOT NULL,
-  `productVendor` varchar(50) NOT NULL,
-  `productDescription` text NOT NULL,
-  `quantityInStock` smallint(6) NOT NULL,
-  `buyPrice` decimal(10,2) NOT NULL,
+  `product_code` varchar(15) NOT NULL,
+  `product_name` varchar(70) NOT NULL,
+  `product_line_id` int(10) NOT NULL,
+  `product_scale` varchar(10) NOT NULL,
+  `product_vendor` varchar(50) NOT NULL,
+  `product_description` text NOT NULL,
+  `quantity_in_stock` smallint(6) NOT NULL,
+  `buy_price` decimal(10,2) NOT NULL,
   `MSRP` decimal(10,2) NOT NULL,
-  PRIMARY KEY (`productCode`),
-  KEY `productLine` (`productLine`),
-  CONSTRAINT `products_ibfk_1` FOREIGN KEY (`productLine`) REFERENCES `productlines` (`productLine`)
+  PRIMARY KEY (`product_code`),
+  KEY `productline` (`product_line_id`),
+  CONSTRAINT `products_ibfk_1` FOREIGN KEY (`product_line_id`) REFERENCES `productlines` (`product_line_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

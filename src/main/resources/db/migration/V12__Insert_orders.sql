@@ -1,4 +1,4 @@
-insert  into `orders`(`orderNumber`,`orderDate`,`requiredDate`,`shippedDate`,`status`,`comments`,`customerNumber`) values 
+insert  into `orders`(`order_number`,`order_date`,`required_date`,`shipped_date`,`status`,`comments`,`customer_number`) values 
 
 (10100,'2003-01-06','2003-01-13','2003-01-10','Shipped',NULL,363),
 
