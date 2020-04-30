@@ -8,10 +8,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-/**
- * This entity manages products, by storing a list of scale model cars.
- * @author luis
- */
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter 
+@Setter 
+@NoArgsConstructor
 @Entity(name = "products")
 public class Product {
 	@Id
@@ -42,82 +45,4 @@ public class Product {
 	
 	@Column
 	private BigDecimal MSRP;
-	
-	Product() {
-		// Used by JPA
-	}
-
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public ProductLine getProductline() {
-		return productline;
-	}
-
-	public void setProductline(ProductLine productline) {
-		this.productline = productline;
-	}
-
-	public String getScale() {
-		return scale;
-	}
-
-	public void setScale(String scale) {
-		this.scale = scale;
-	}
-
-	public String getVendor() {
-		return vendor;
-	}
-
-	public void setVendor(String vendor) {
-		this.vendor = vendor;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Integer getStock() {
-		return stock;
-	}
-
-	public void setStock(Integer stock) {
-		this.stock = stock;
-	}
-
-	public BigDecimal getBuyprice() {
-		return buyprice;
-	}
-
-	public void setBuyprice(BigDecimal buyprice) {
-		this.buyprice = buyprice;
-	}
-
-	public BigDecimal getMSRP() {
-		return MSRP;
-	}
-
-	public void setMSRP(BigDecimal mSRP) {
-		MSRP = mSRP;
-	}
-
-	
 }
