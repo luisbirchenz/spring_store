@@ -48,7 +48,7 @@ public class ProductLineService {
 	}
 
 	
-	private ProductLineDTO toProductLineDTO(ProductLine productline) {
+	public ProductLineDTO toProductLineDTO(ProductLine productline) {
 		return modelMapper.map(productline, ProductLineDTO.class);
 	}
 	

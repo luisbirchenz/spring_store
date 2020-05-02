@@ -1,8 +1,8 @@
 package com.lab.productline.api;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.mockito.Mockito.doReturn;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doReturn;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -12,9 +12,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -73,7 +71,7 @@ class ProductLineRestControllerTest {
 			.andExpect(jsonPath("$.id", is(1)))
 			.andExpect(jsonPath("$.productline", is("Classic Cars")))
 			.andExpect(jsonPath("$.text", is("Text")))
-			.andExpect(jsonPath("$.description", is("description")))
+			.andExpect(jsonPath("$.html", is("description")))
 			.andExpect(jsonPath("$.image", is("image")));
 	}
 
@@ -109,7 +107,7 @@ class ProductLineRestControllerTest {
 				.andExpect(jsonPath("$.id", is(1)))
 				.andExpect(jsonPath("$.productline", is(productDTO.getProductline())))
 				.andExpect(jsonPath("$.text", is(productDTO.getText())))
-				.andExpect(jsonPath("$.description", is(productDTO.getDescription())))
+				.andExpect(jsonPath("$.html", is(productDTO.getHtml())))
 				.andExpect(jsonPath("$.image", is(productDTO.getImage())));
 	}
 	
@@ -152,7 +150,7 @@ class ProductLineRestControllerTest {
 				.andExpect(jsonPath("$.id", is(1)))
 				.andExpect(jsonPath("$.productline", is(modifiedProductDTO.getProductline())))
 				.andExpect(jsonPath("$.text", is(modifiedProductDTO.getText())))
-				.andExpect(jsonPath("$.description", is(modifiedProductDTO.getDescription())))
+				.andExpect(jsonPath("$.html", is(modifiedProductDTO.getHtml())))
 				.andExpect(jsonPath("$.image", is(modifiedProductDTO.getImage())));
 	}
 	

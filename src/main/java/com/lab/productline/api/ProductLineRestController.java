@@ -83,7 +83,7 @@ public class ProductLineRestController {
 					if(!p.getProductline().equals(ifMatch)) {
 						return ResponseEntity.status(HttpStatus.CONFLICT).build();
 					}
-					p.setDescription(productLineDTO.getDescription());
+					p.setHtml(productLineDTO.getHtml());
 					p.setText(productLineDTO.getText());
 					p.setImage(productLineDTO.getImage());
 					p.setProductline(productLineDTO.getProductline());

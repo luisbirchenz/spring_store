@@ -38,6 +38,6 @@ public class ProductLine {
 	@Column(name = "image")
 	private String image;
 	
-	@OneToMany(mappedBy = "productline", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+	@OneToMany(mappedBy = "productline", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	private List<Product> products;
 }
