@@ -38,7 +38,8 @@ public class ProductLineService {
 	}
 	
 	public ProductLineDTO save(ProductLineDTO productLineDTO) {
-		ProductLine productLine = productLineRepository.save(toProductLineEntity(productLineDTO));
+		ProductLine productLineEntity = toProductLineEntity(productLineDTO);
+		ProductLine productLine = productLineRepository.save(productLineEntity);
 		return toProductLineDTO(productLine);
 	}
 	
@@ -48,7 +49,7 @@ public class ProductLineService {
 	}
 
 	
-	public ProductLineDTO toProductLineDTO(ProductLine productline) {
+	private ProductLineDTO toProductLineDTO(ProductLine productline) {
 		return modelMapper.map(productline, ProductLineDTO.class);
 	}
 	
