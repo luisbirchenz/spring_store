@@ -1,7 +1,21 @@
 # My Store demo
-This is a Monolithic application to test Flyway database migrations, in order to demo JUnit test and integration test techniques 
-with Spring boot and to show some features of Spring Actuator. The data shown here was found and download from this link (where
-the database example is available for everyone) [here](https://www.mysqltutorial.org/mysql-sample-database.aspx)
+This is a Monolithic application which was created in order to understand the business involved much better and at the same time I will try to follow the best practices recommended for it
+
+This project is going to use: 
+* Spring boot
+* Spring Rest Controllers
+* Spring data Jpa
+* Spring actuator
+* Lombok
+* JUnit 5
+* Mockito
+* DBUnit
+* Mysql 
+* H2 - For testing
+* Swagger
+* Flyway
+
+I've been working on this project by analyzing the model on which it is based. Consider that the data shown here was found and download from this link (where the database example is available for everyone) [here](https://www.mysqltutorial.org/mysql-sample-database.aspx)
 
 The MySQL sample database schema consists of the following tables:
 
@@ -14,14 +28,11 @@ The MySQL sample database schema consists of the following tables:
 * Employees: stores all employee information as well as the organization structure such as who reports to whom.
 * Offices: stores sales office data.
 
-After testing a couple of things here this project will be converted to microservices. The idea is to migrate to microservices
-by following the best known patterns.
+This model can be updated in the course of development if new ideas about this come up.
 
-Just to mention, the idea is to use:
+The idea is to understand the proposed business well and then move it to microservices. So, after testing a couple of things here this project will be converted to microservices. 
 
-* Spring cloud (Netflix - Eureka, Zool, Ribbon, etc..)
-* Axon Framework (CQRS / Event Sourcing / Saga pattern)
+The project where it is going to happen is availabe under this [link](https://github.com/luisbirchenz/storeapp). The status is: working in progress.
 
-Once this process is completed the link to the next project will be included here soon.
 
 
