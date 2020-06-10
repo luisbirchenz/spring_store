@@ -15,7 +15,7 @@ public class ProductLineDTO {
 	private Long id;
 	private String productline;
 	private String text;
-	private String description;
+	private String html;
 	private String image;
 	private List<ProductDTO> products;	
 }

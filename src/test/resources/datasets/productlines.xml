@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <PRODUCTLINES PRODUCT_LINE_ID="1" PRODUCT_LINE="Classic Cars" TEXT_DESCRIPTION="Attention car enthusiasts: Make your" HTML_DESCRIPTION="description" IMAGE="image"/>
+    <PRODUCTLINES PRODUCT_LINE_ID="2" PRODUCT_LINE="Motorcycles" TEXT_DESCRIPTION="Our motorcycles are state of the art " HTML_DESCRIPTION="description" IMAGE="image"/>
+    <PRODUCTLINES PRODUCT_LINE_ID="3" PRODUCT_LINE="Planes" TEXT_DESCRIPTION="Unique, diecast airplane and helicopter re" HTML_DESCRIPTION="description" IMAGE="image"/>
+    <PRODUCTLINES PRODUCT_LINE_ID="4" PRODUCT_LINE="Ships" TEXT_DESCRIPTION="The perfect holiday or anniversary gift for" HTML_DESCRIPTION="description" IMAGE="image"/>
+    <PRODUCTLINES PRODUCT_LINE_ID="5" PRODUCT_LINE="Trains" TEXT_DESCRIPTION="Model trains are a rewarding hobby for ent" HTML_DESCRIPTION="description" IMAGE="image"/>
+    <PRODUCTLINES PRODUCT_LINE_ID="6" PRODUCT_LINE="Trucks and Buses" TEXT_DESCRIPTION="The Truck and Bus models are rea" HTML_DESCRIPTION="description" IMAGE="image"/>
+    <PRODUCTLINES PRODUCT_LINE_ID="7" PRODUCT_LINE="Vintage Cars" TEXT_DESCRIPTION="Our Vintage Car models realistically" HTML_DESCRIPTION="description" IMAGE="image"/>
+    <PRODUCTLINES PRODUCT_LINE_ID="9" PRODUCT_LINE="Executive Cars" TEXT_DESCRIPTION="Attention car enthusiasts: This is" HTML_DESCRIPTION="description" IMAGE="image"/>
+</dataset>
